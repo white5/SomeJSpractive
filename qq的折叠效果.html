@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>qq折叠效果</title>
+	<style>
+		ul,li,h2{padding:0; margin:0;}
+		li{ list-style: none;}
+		#list{margin:0 auto; width:240px;  border:1px solid #333;}
+		#list h2{height:30px;  line-height:30px; text-indent:15px; background:url(img/ico1.gif) no-repeat 5px center #6ff;}
+		#list ul li{text-indent: 15px; height:20px; line-height:20px;  border-bottom:1px solid #333;}
+		#list ul{display: none;}
+		#list .active{ background:#FFFF99;}
+		#list ul .hover{background:red;}
+	</style>
+	<script type="text/javascript">
+	window.onload = function(){
+		var oUl = document.getElementById('list');
+		var aH2 = oUl.getElementsByTagName('h2');
+		var aUl = oUl.getElementsByTagName('ul');
+		var aLi = null;
+		var arrLi = [];
+			
+		for(var i = 0;i < aH2.length;i++){
+			aH2[i].index = i;
+			aH2[i].onclick = function(){
+				for(var i = 0;i < aH2.length;i++){
+					if( i != this.index){
+						aH2[i].className = '';
+						aUl[i].style.display = 'none';
+					}
+				}			
+
+				if(this.className == ''){
+					aUl[this.index].style.display = 'block';
+					this.className = 'active';
+				}else{
+					aUl[this.index].style.display = 'none';
+					this.className = '';
+				}
+			}
+		}
+
+		for(var i = 0; i < aUl.length ; i++){
+			aLi = aUl[i].getElementsByTagName('li');
+			for(var j = 0;j < aLi.length ; j++){
+				arrLi.push(aLi[j]);
+			}
+		}
+
+		for(var i = 0;i < arrLi.length ; i++){
+			arrLi[i].onclick = function(){
+				for(var i = 0; i < arrLi.length;i++){
+					if(arrLi[i] != this){
+						arrLi[i].className = '';
+					}
+				}
+
+				if( this.className ==''){
+					this.className = 'hover';
+				}else{
+					this.className = '';
+				}
+			}
+		};	
+	}
+
+
+	</script>
+</head>
+<body>
+	<ul id='list'>
+		<li>
+			<h2>我的好友</h2>
+			<ul>
+				<li>小王</li>
+				<li>小红</li>
+				<li>小张</li>
+			</ul>
+		</li>
+		<li>
+			<h2>我的坏友</h2>
+			<ul>
+				<li>小白</li>
+				<li>小绿</li>
+				<li>小黑</li>
+			</ul>
+		</li>
+		<li>
+			<h2>不明人士</h2>
+			<ul>
+				<li>小心</li>
+				<li>阿呆</li>
+				<li>风间</li>
+			</ul>
+		</li>
+	</ul>
+</body>
+</html>
+
+
