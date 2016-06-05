@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<script>
+window.onload = function(){
+	var oUl = document.getElementsByTagName('ul')[0];
+	var aLi = oUl.getElementsByTagName('li');
+	var oP = document.getElementsByTagName('p')[0];
+	var sum1 = oP.getElementsByTagName('span')[0];
+	var sum2 = oP.getElementsByTagName('span')[1];
+
+	for(var i = 0; i < aLi.length ;i++ ){
+		fn1(aLi[i]);
+		fn2(aLi[i]);
+	}
+
+
+	function fn1(oLi){
+		var aInp = oLi.getElementsByTagName('input');
+		var oSpan =	oLi.getElementsByTagName('span')[0];
+		var oEm = oLi.getElementsByTagName('em')[0];
+		var oStr = oLi.getElementsByTagName('strong')[0];
+		var n1 = oStr.innerHTML;
+		var n2 = parseFloat(oEm.innerHTML);
+		
+
+
+		aInp[0].onclick = function(){
+			n1++;
+			oSpan.innerHTML = n1*n2 + '元';
+			oStr.innerHTML = n1; 
+		}
+		aInp[1].onclick = function(){
+			n1--;
+			if(n1 < 0){
+				n1 = 0;
+			}
+			oSpan.innerHTML = n1*n2 + '元';
+			oStr.innerHTML = n1; 
+		}
+	}
+	function fn2(oLi){
+		var oStr = oLi.getElementsByTagName('strong')[0];
+		
+		sum1.innerHTML = parseFloat(sum1.innerHTML) + parseFloat(oStr.innerHTML);
+	}
+
+}		
+</script>
+</head>
+<body>
+	<ul>
+		<li>
+			<input type="button" value="+"/>
+			<strong>0</strong>
+			<input type="button" value="-"/>
+			单价：<em>14.5元</em>
+			小计：<span>0元</span>
+		</li>
+		<li>
+			<input type="button" value="+"/>
+			<strong>0</strong>
+			<input type="button" value="-"/>
+			单价：<em>9.5元</em>
+			小计：<span>0元</span>
+		</li>
+		<li>
+			<input type="button" value="+"/>
+			<strong>0</strong>
+			<input type="button" value="-"/>
+			单价：<em>4.5元</em>
+			小计：<span>0元</span>
+		</li>
+		<li>
+			<input type="button" value="+"/>
+			<strong>0</strong>
+			<input type="button" value="-"/>
+			单价：<em>8.5元</em>
+			小计：<span>0元</span>
+		</li>
+	</ul>
+	<p>
+		商品合计花费共：<span>0</span>件，共花费了：<span>0</span>元<br/>
+		其中最贵的单价是：<strong>0</strong>元
+	</p>
+</body>
+</html>
