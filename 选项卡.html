@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		window.onload = function(){
+			var atitle = $('tab-header').getElementsByTagName('li');
+			var adiv = $('tab-content').getElementsByTagName('div');
+
+			if(atitle.length != adiv.length) return;
+
+				for(var i = 0; i < atitle.length ;i++ ){
+
+					var ali = atitle[i];
+					ali.id = i;
+
+					ali.onmousemove = function(){
+         					for(var j=0; j<atitle.length; j++){
+            					atitle[j].className = '';
+             					adiv[j].style.display ='none';
+         					}
+
+         					this.className = 'select';
+         					adiv[this.id].style.display = 'block';
+       			}
+
+				}
+				function $(id){
+				return typeof id ==='string' ? document.getElementById(id):id;
+				}
+					}
+	</script>
+	<style>
+		ul,li,dd,dt,em,div,blockquote{padding:0; margin:0;}
+		ul{ list-style: none; }
+		a{text-decoration: none; color:#000;}
+
+		#tab{width:498px; height:130px; border:1px solid #ddd; overflow:hidden;}
+		#tab #tab-header{height:36px; background-color:#F7F7F7; position:relative;}
+		#tab #tab-header ul{width:500px; position:absolute; left:-1px; }
+		#tab #tab-header ul li{float:left; width:98px; line-height:36px; text-align:center;  padding:0 1px; border-bottom:1px solid #DDDDDD;}
+		#tab #tab-header ul li.select{background:#fff; border-bottom:0px; border-left:1px solid #DDD; border-right:1px solid #ddd; padding:0;}
+		#tab #tab-header ul li:hover{color:#FF7E48; cursor:pointer; font-weight:bold;}
+		#tab #tab-content .dom{display:none;}
+		#tab #tab-content .dom ul li{float:left; width:240px; margin-top:20px; margin-left:5px;}
+	</style>
+</head>
+<body>
+	<div id = 'tab'>
+		<div id = 'tab-header'>
+			<ul>
+				<li class="select">公告</li>
+				<li>规则</li>
+				<li>论坛</li>
+				<li>安全</li>
+				<li>公益</li>
+			</ul>
+		</div>
+		<div id = 'tab-content'>
+			<div class = 'dom' style = 'display:block'>
+				<ul>
+					<li><a href="#">数据七夕:金牛爱送玫瑰</a></li>
+					<li><a href="#">阿里打造"互联网监管"</a></li>
+					<li><a href="#">10万家店60万新品</a></li>
+					<li><a href="#">全球最大网上时装周</a></li>
+				</ul>
+			</div>
+			<div class = 'dom'>
+				<ul>
+					<li><a href="#">“全额返现”要管控啦</a></li>
+					<li><a href="#">淘宝新规发布汇总(7月)</a></li>
+					<li><a href="#">炒信规则调整意见反馈</a></li>
+					<li><a href="#">质量相关规则近期变更</a></li>
+				</ul>
+			</div>
+			<div class = 'dom'>
+				<ul>
+					<li><a href="#">接次文件，毁了一家店</a></li>
+					<li><a href="#">账号安全神器阿里钱盾</a></li>
+					<li><a href="#">新版阿里110上线了</a></li>
+					<li><a href="#">卖家学违禁避免被处罚</a></li>
+				</ul>
+			</div>
+			<div class = 'dom'>
+				<ul>
+					<li><a href="#">接次文件，毁了一家店</a></li>
+					<li><a href="#">账号安全神器阿里钱盾</a></li>
+					<li><a href="#">新版阿里110上线了</a></li>
+					<li><a href="#">卖家学违禁避免被处罚</a></li>
+				</ul>
+			</div>
+			<div class = 'dom'>
+				<ul>
+					<li><a href="#">为了公益high起来</a></li>
+					<li><a href="#">魔豆妈妈在线申请</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
